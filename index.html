@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WESIE | Official Link</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #070305;
+      color: #fff;
+    }
+
+    .page {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 45px 20px;
+      text-align: center;
+      background-image: url('bg1.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .page::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7,3,5,0.5) 0%, rgba(7,3,5,0.28) 50%, rgba(7,3,5,0.78) 100%);
+      z-index: 0;
+    }
+
+    .top-section,
+    .middle-section,
+    .bottom-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    .top-section {
+      margin-top: 15px;
+      animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .sparkle {
+      font-size: 16px;
+      color: #dfb15b;
+      margin-bottom: 8px;
+      text-shadow: 0 0 12px rgba(223, 177, 91, 0.6);
+      animation: pulseSparkle 2s infinite ease-in-out;
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      font-weight: 500;
+      letter-spacing: 9px;
+      color: #ffffff;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+    }
+
+    .brand-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 10.5px;
+      font-weight: 400;
+      letter-spacing: 6px;
+      color: #dfb15b;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+
+    .middle-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 11px;
+      width: 100%;
+      max-width: 320px;
+      animation: zoomIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .enter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 56px;
+      background: rgba(245, 230, 208, 0.92);
+      color: #2b2b2b;
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      border-radius: 35px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      animation: creamyGlowPulse 2.5s infinite ease-in-out;
+      transition: all 0.3s ease;
+    }
+
+    .enter-btn:hover {
+      background: #ffffff;
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .click-here-text {
+      display: none;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: #f5e6d0;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    .click-here-text.animate-in {
+      display: block;
+      animation: professionalReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .primary-dest-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 60px;
+      background: rgba(245, 230, 208, 0.97);
+      color: #2b2b2b;
+      font-family: 'Cinzel', serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-radius: 35px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(25px) scale(0.95);
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .primary-dest-btn.animate-in {
+      display: flex;
+      animation: 
+        professionalReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards,
+        softZigzag 1.6s ease-in-out 1s infinite;
+    }
+
+    .primary-dest-btn:hover {
+      background: #ffffff;
+      transform: translateY(-4px) scale(1.04) !important;
+      box-shadow: 0 15px 40px rgba(245, 230, 208, 0.5);
+      animation-play-state: paused;
+    }
+
+    .bottom-section {
+      margin-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      width: 100%;
+    }
+
+    .tease-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16.5px;
+      color: #f0e6d8;
+      letter-spacing: 0.4px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+      max-width: 280px;
+      line-height: 1.45;
+    }
+
+    .social-icons-row {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2px;
+      opacity: 0;
+      transform: translateY(20px);
+      flex-wrap: wrap;
+    }
+
+    .social-icons-row.animate-in {
+      display: flex;
+      animation: professionalReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+    }
+
+    .social-icon-link {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(245, 230, 208, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f5e6d0;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      backdrop-filter: blur(5px);
+      position: relative;
+    }
+
+    .social-icon-link:hover {
+      transform: translateY(-3px) scale(1.12);
+      background: rgba(245, 230, 208, 0.25);
+      border-color: #fff;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(245, 230, 208, 0.4);
+    }
+
+    .social-icon-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .stacked-icon {
+      animation: stackedPulse 1.8s ease-in-out infinite;
+      border-color: rgba(245, 230, 208, 0.7) !important;
+      box-shadow: 0 0 12px rgba(245, 230, 208, 0.35);
+    }
+
+    .stacked-icon::after {
+      content: 'come chat';
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 9px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #f5e6d0;
+      white-space: nowrap;
+      opacity: 0.9;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+    }
+
+    .footer-signature {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: #a8a8a8;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    #security-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 3, 5, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: rgba(20, 10, 15, 0.95);
+      border: 1px solid rgba(245, 230, 208, 0.3);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 330px;
+      padding: 32px 22px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      letter-spacing: 3px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .modal-desc {
+      font-size: 12.5px;
+      color: #d1d1d1;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .scanner-loader {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(245, 230, 208, 0.2);
+      border-top-color: #f5e6d0;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 18px auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes professionalReveal {
+      0% { opacity: 0; transform: translateY(25px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes pulseSparkle {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; text-shadow: 0 0 18px rgba(223, 177, 91, 0.9); }
+    }
+    @keyframes creamyGlowPulse {
+      0%, 100% { 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(245, 230, 208, 0.15); 
+      }
+      50% { 
+        box-shadow: 0 15px 35px rgba(245, 230, 208, 0.3), 0 0 25px rgba(245, 230, 208, 0.4); 
+      }
+    }
+    @keyframes softZigzag {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      50% { transform: translateX(6px); }
+      75% { transform: translateX(-4px); }
+    }
+    @keyframes stackedPulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(245, 230, 208, 0.45);
+      }
+      50% { 
+        transform: scale(1.12);
+        box-shadow: 0 0 0 10px rgba(245, 230, 208, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page">
+    <div class="top-section">
+      <div class="sparkle">✦</div>
+      <h1 class="brand-title">WESIE</h1>
+      <div class="brand-subtitle">Exclusive Space</div>
+    </div>
+
+    <div class="middle-section">
+      <button class="enter-btn" id="main-action-btn" onclick="startSecurityScan()">
+        YES, I'M 18
+      </button>
+
+      <div class="click-here-text" id="click-here-text">
+        be good & click ↓
+      </div>
+
+      <a href="https://www.stacked.com/@wslo/membership?lang=en" class="primary-dest-btn" id="exclusive-btn" target="_blank" rel="noopener external">
+        Come closer… I'm waiting
+      </a>
+    </div>
+
+    <div class="bottom-section">
+      <div class="tease-text">
+        soft voice. slow answers.<br>only for the ones who stay.
+      </div>
+      
+      <div class="social-icons-row" id="social-icons-row">
+        <a href="https://www.instagram.com/wsloffcial" class="social-icon-link" target="_blank" rel="noopener external" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@wesuie" class="social-icon-link" target="_blank" rel="noopener external" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12a4 4 0 1 0 4 0V4a5 5 0 0 0 5 5v3a3 3 0 0 1-3-3v7a8 8 0 1 1-8-8v3a5 5 0 0 0 5 5z"></path>
+          </svg>
+        </a>
+        <a href="https://t.me/+zjFOawc7051hNzM8" class="social-icon-link" target="_blank" rel="noopener external" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </a>
+        <a href="https://www.stacked.com/@wslo/membership?lang=en" class="social-icon-link stacked-icon" target="_blank" rel="noopener external" aria-label="Stacked">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="4" rx="1"></rect>
+            <rect x="3" y="10" width="18" height="4" rx="1"></rect>
+            <rect x="3" y="17" width="18" height="4" rx="1"></rect>
+          </svg>
+        </a>
+        <a href="https://www.threads.net" class="social-icon-link" target="_blank" rel="noopener external" aria-label="Threads">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.21-.88 4.31-2.43 5.86-1.55 1.55-3.65 2.43-5.86 2.43h-1.71c-1.89 0-3.43-1.54-3.43-3.43V12a3 3 0 1 0-6 0c0 1.66 1.34 3 3 3h4"></path>
+          </svg>
+        </a>
+        <a href="https://patreon.com/Wsl2s" class="social-icon-link" target="_blank" rel="noopener external" aria-label="Patreon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="15" cy="9" r="6"></circle>
+            <line x1="5" y1="3" x2="5" y2="21"></line>
+          </svg>
+        </a>
+      </div>
+
+      <div class="footer-signature">With Love, Wesie</div>
+    </div>
+  </div>
+
+  <div id="security-modal">
+    <div class="modal-box">
+      <div class="modal-title">HUMAN VERIFICATION</div>
+      <div class="scanner-loader"></div>
+      <p class="modal-desc" id="security-status">Scanning session & filtering bots...</p>
+    </div>
+  </div>
+
+  <script>
+    function startSecurityScan() {
+      const modal = document.getElementById('security-modal');
+      const statusText = document.getElementById('security-status');
+      
+      modal.style.display = 'flex';
+      statusText.innerText = "Scanning device fingerprint...";
+      
+      setTimeout(() => {
+        statusText.innerText = "Validating human interaction...";
+      }, 700);
+      
+      setTimeout(() => {
+        modal.style.display = 'none';
+        document.getElementById('main-action-btn').style.display = 'none';
+        
+        document.getElementById('click-here-text').classList.add('animate-in');
+        document.getElementById('exclusive-btn').classList.add('animate-in');
+        document.getElementById('social-icons-row').classList.add('animate-in');
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
